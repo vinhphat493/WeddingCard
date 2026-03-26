@@ -347,7 +347,7 @@
     </div>
   </div>
   <audio id="wedding-music" loop>
-    <source src="./src/audio/audio1.mp3" type="audio/mpeg">
+    <source src="./src/audio/Violin.mp3" type="audio/mpeg">
   </audio>
   <script>
     // Guest data
@@ -743,9 +743,22 @@
       // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Play music
+      // Play music with playlist
       const music = document.getElementById('wedding-music');
-      music.play().catch(err => console.log('Audio play failed:', err));
+      const playlist = ['./src/audio/audio1.mp3', './src/audio/audio2.mp3'];
+      let currentTrack = 0;
+
+      function playTrack() {
+        music.src = playlist[currentTrack];
+        music.play().catch(err => console.log('Audio play failed:', err));
+      }
+
+      music.addEventListener('ended', () => {
+        currentTrack = (currentTrack + 1) % playlist.length;
+        playTrack();
+      });
+
+      playTrack();
     });
 
     const petalsContainer = document.getElementById('petals');
