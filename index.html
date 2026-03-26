@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Wedding Invitation</title>
+  <link rel="stylesheet" href="/src/css/style.css">
+</head>
+
+<body>
+
+  <!-- PETALS -->
+  <div class="petals" id="petals"></div>
+
+  <!-- MUSIC -->
+  <audio id="bg-music" loop>
+    <source src="/src/audio/audio1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- SPLASH -->
+  <div id="splash">
+    <div class="splash-content">
+      <div class="splash-names">Mỹ Ân & Cẩm Toàn</div>
+      <p>12 · 04 · 2026</p>
+      <button id="splash-btn">💌 Mở thiệp cưới</button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image:url('/src/images/image4.jpg')"></div>
+        <div class="swiper-slide" style="background-image:url('/src/images/image1.jpg')"></div>
+        <div class="swiper-slide" style="background-image:url('/src/images/image5.jpg')"></div>
+      </div>
+    </div>
+
+    <div class="overlay" data-aos="fade-up">
+      <div class="names">Mỹ Ân & Cẩm Toàn</div>
+      <div id="countdown">
+        <div class="countdown-item"><span id="cd-days">0</span><label>Ngày</label></div>
+        <div class="countdown-item"><span id="cd-hours">0</span><label>Giờ</label></div>
+        <div class="countdown-item"><span id="cd-minutes">0</span><label>Phút</label></div>
+        <div class="countdown-item"><span id="cd-seconds">0</span><label>Giây</label></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUPLE -->
+  <section>
+    <h2 data-aos="fade-up">Cô dâu & Chú rể</h2>
+    <div class="divider"></div>
+    <div class="flex">
+      <div class="col card" data-aos="fade-right">
+        <h3>Cẩm Toàn</h3>
+        <p>Chú rể</p>
+      </div>
+      <div class="col card" data-aos="fade-left">
+        <h3>Mỹ Ân</h3>
+        <p>Cô dâu</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY -->
+  <section>
+    <h2 data-aos="fade-up">Gia đình</h2>
+    <div class="divider"></div>
+    <div class="flex">
+      <div class="col card">
+        <h3>Nhà trai</h3>
+        <p>Bà Lương Miêu Hưng</p>
+      </div>
+      <div class="col card">
+        <h3>Nhà gái</h3>
+        <p>Ông Huỳnh Diệu Huệ</p>
+        <p>Bà Quang Muội Muội</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT -->
+  <section>
+    <h2 data-aos="fade-up">Lễ cưới</h2>
+    <div class="divider"></div>
+    <div class="card">
+      <p>📅 12/04/2026 - 18:00</p>
+      <p>📍 Nhà hàng Riverside Palace</p>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section>
+    <h2>Xác nhận tham dự</h2>
+    <div class="divider"></div>
+    <div class="card invitation-wrapper" data-aos="zoom-in">
+      <div class="invitation-card">
+        <img src="/src/images/invitation.jpg" alt="Thiệp mời">
+      </div>
+      <p style="margin-top:10px; opacity:0.7;">Quét QR trên thiệp để xác nhận 💌</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section>
+    <h2 data-aos="fade-up">Album ảnh</h2>
+    <div class="divider"></div>
+    <div class="gallery">
+      <img src="/src/images/image2.jpg" alt="Wedding 2">
+      <img src="/src/images/image6.jpg" alt="Wedding 4">
+      <img src="/src/images/image3.jpg" alt="Wedding 3">
+    </div>
+  </section>
+
+  <footer>
+    <p>Thank you for celebrating with us ✨</p>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+
+</html>
