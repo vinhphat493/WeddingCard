@@ -745,20 +745,7 @@
 
       // Play music with playlist
       const music = document.getElementById('wedding-music');
-      const playlist = ['./src/audio/audio1.mp3', './src/audio/audio2.mp3'];
-      let currentTrack = 0;
-
-      function playTrack() {
-        music.src = playlist[currentTrack];
-        music.play().catch(err => console.log('Audio play failed:', err));
-      }
-
-      music.addEventListener('ended', () => {
-        currentTrack = (currentTrack + 1) % playlist.length;
-        playTrack();
-      });
-
-      playTrack();
+      music.play().catch(err => console.log('Audio play failed:', err));
     });
 
     const petalsContainer = document.getElementById('petals');
