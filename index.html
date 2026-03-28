@@ -1,805 +1,1388 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- <base href="https://api.vesey.vn/templates/"> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hôn Lễ Của Chúng Ta</title>
 
-<head>
-  <!-- <base href="https://api.vesey.vn/templates/"> -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hôn Lễ Của Chúng Ta</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Vietnamese subset -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Great+Vibes&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;subset=vietnamese&amp;display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Google Fonts - Vietnamese subset -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Great+Vibes&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;subset=vietnamese&amp;display=swap"
-    rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-  <style>
-    .font-display {
-      font-family: 'Playfair Display', serif;
-    }
-
-    .font-script {
-      font-family: 'Dancing Script', cursive;
-    }
-
-    .font-vibes {
-      font-family: 'Great Vibes', cursive;
-    }
-
-    .font-body {
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    .font-crimson {
-      font-family: 'Crimson Text', serif;
-    }
-
-    .font-libre {
-      font-family: 'Libre Baskerville', serif;
-    }
-
-    .font-lora {
-      font-family: 'Lora', serif;
-    }
-
-    /* Màu sắc tùy chỉnh cho thiệp cưới */
-    .text-couple-name {
-      color: #af4949;
-    }
-
-    .bg-couple-accent {
-      background-color: #af4949;
-    }
-
-    .border-couple-accent {
-      border-color: #af4949;
-    }
-
-    @keyframes heartbeat {
-
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 1;
+    <style>
+      .font-display {
+        font-family: "Playfair Display", serif;
       }
 
-      25% {
-        transform: scale(1.4);
-        opacity: 1;
+      .font-script {
+        font-family: "Dancing Script", cursive;
       }
 
-      50% {
-        transform: scale(1);
-        opacity: 0.4;
+      .font-vibes {
+        font-family: "Great Vibes", cursive;
       }
 
-      75% {
-        transform: scale(1.2);
-        opacity: 1;
-      }
-    }
-
-    .fade-bottom {
-      position: relative;
-      border-radius: 50% 50% 0 0;
-      overflow: hidden;
-    }
-
-    .fade-bottom::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 0%, transparent 100%);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .fade-bottom::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 120px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.7) 50%, rgb(255, 255, 255) 100%);
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    /* QR toggle */
-    .vs-qr-content.vs-hidden {
-      display: none;
-    }
-
-    .vs-qr-content.vs-reveal {
-      animation: qr-reveal 0.4s ease-out;
-    }
-
-    @keyframes qr-reveal {
-      from {
-        opacity: 0;
-        transform: translateY(-8px);
+      .font-body {
+        font-family: "Cormorant Garamond", serif;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Form */
-    .form-input {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      background: #f9fafb;
-      color: #1a1a1a;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
-      transition: border-color 0.3s;
-      outline: none;
-    }
-
-    .form-input:focus {
-      border-color: #af4949;
-    }
-
-    .form-input::placeholder {
-      color: #9ca3af;
-    }
-
-    .form-select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23757575'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 40px;
-    }
-
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      padding: 10px 14px;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      transition: all 0.3s;
-    }
-
-    .radio-option:has(input:checked) {
-      background: #fdf6f6;
-      border-color: #af4949;
-    }
-
-    .radio-option input[type="radio"] {
-      accent-color: #af4949;
-    }
-
-    /* FLOATING PETALS */
-    .petals {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 9999;
-    }
-
-    .petal {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: radial-gradient(circle, #ffb6c1, #ff69b4);
-      border-radius: 50% 50% 50% 0;
-      opacity: 0.7;
-      transform: rotate(45deg);
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-10vh) translateX(0) rotate(0deg);
-        opacity: 0;
+      .font-crimson {
+        font-family: "Crimson Text", serif;
       }
 
-      10% {
-        opacity: 0.8;
+      .font-libre {
+        font-family: "Libre Baskerville", serif;
       }
 
-      100% {
-        transform: translateY(110vh) translateX(50px) rotate(360deg);
-        opacity: 0;
+      .font-lora {
+        font-family: "Lora", serif;
       }
-    }
 
-    /* SPLASH SCREEN */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, #fff0f5, #ffe4ec);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-      transition: opacity 0.6s ease;
-    }
-
-    #splash.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .splash-content {
-      background: white;
-      border-radius: 20px;
-      padding: 40px 50px;
-      box-shadow: 0 20px 60px rgba(175, 73, 73, 0.2);
-      text-align: center;
-      max-width: 720px;
-    }
-
-    .splash-heart {
-      font-size: 32px;
-      color: white;
-      background-color: #af4949;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-
-    .splash-names {
-      font-size: 42px;
-      color: #af4949;
-      margin-bottom: 16px;
-      line-height: 1.2;
-      position: relative;
-      display: inline-block;
-      padding: 0 60px 10px;
-      border-bottom: 1px solid #af4949;
-    }
-
-    .splash-names::before,
-    .splash-names::after {
-      content: '♥';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 16px;
-      color: #af4949;
-    }
-
-    .splash-names::before {
-      left: 20px;
-    }
-
-    .splash-names::after {
-      right: 20px;
-    }
-
-    .splash-date {
-      font-size: 16px;
-      color: #5a3e4d;
-      margin-bottom: 10px;
-    }
-
-    .splash-invite {
-      font-size: 20px;
-      color: #666;
-      margin-bottom: 8px;
-      font-weight: 800;
-    }
-
-    .splash-guest-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: #af4949;
-      font-weight: 600;
-      margin-bottom: 24px;
-      min-height: 28px;
-      text-transform: uppercase;
-    }
-
-    #splash-btn {
-      background: linear-gradient(135deg, #af4949, #c45858);
-      color: #fff;
-      border: none;
-      padding: 14px 36px;
-      border-radius: 50px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(175, 73, 73, 0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    #splash-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 32px rgba(175, 73, 73, 0.5);
-    }
-  </style>
-</head>
-
-<body>
-  <div id="splash">
-    <div class="splash-content">
-      <div class="splash-heart">♥</div>
-      <div class="splash-names font-script ">Cẩm Toàn & Mỹ Ân</div>
-      <div class="splash-date">12 tháng 04, 2026</div>
-      <div class="splash-invite font-body">Kính mời</div>
-      <div class="splash-guest-name" id="splash-guest-name"></div>
-      <button id="splash-btn">💌 Mở thiệp cưới</button>
-    </div>
-  </div>
-  <audio id="wedding-music" loop>
-    <source src="./src/audio/Violin.mp3" type="audio/mpeg">
-  </audio>
-  <script>
-    // Guest data
-    const guestData = {
-      "phat": "Lạc Vĩnh Phát",
-      "minhhung": "Đỗ Minh Hùng",
-      "kietzhang": "Giang Trí Kiệt",
-      "trilac": "Gia Đình Trí Lạc",
-      "samset": "Văn Huyền Thảo Nguyên - SS"
-    };
-
-    // Lấy tên khách từ URL params
-    const urlParams = new URLSearchParams(window.location.search);
-    const nameKey = urlParams.get('name');
-    if (nameKey && guestData[nameKey]) {
-      const guestNameEl = document.getElementById('splash-guest-name');
-      if (guestNameEl) {
-        guestNameEl.textContent = guestData[nameKey];
+      /* Màu sắc tùy chỉnh cho thiệp cưới */
+      .text-couple-name {
+        color: #af4949;
       }
-    }
-  </script>
-  <div class="petals" id="petals"></div>
-  <div class="max-w-[640px] mx-auto" data-uuid="69b6889bad125">
 
-    <!-- Section 1: Header -->
-    <header data-moveable="true" data-hidable="true" data-uuid="69b6889bad135">
-      <div class="flex justify-between items-center px-4" data-uuid="69b6889bad137">
-        <h1 class="text-2xl font-script" data-editable="true" data-uuid="69b6889bad138">2026</h1>
-        <p class="text-xs text-gray-600" data-editable="true" data-uuid="69b6889bad139">Nhà có hỷ, mời bạn đến
-          chung
-          vui</p>
-        <h1 class="text-2xl font-script" data-editable="true" data-uuid="69b6889bad13b">12/04</h1>
-      </div>
-      <h1 class="font-display text-center mt-2 mb-4" data-editable="true" data-uuid="69b6889bad13c">Wedding
-        Invitation
-      </h1>
-      <div class="fade-bottom mb-6" data-uuid="69b6889bad13d">
-        <img src="./src/images/image5.jpg" alt="" class="rounded-t-[50%] w-full border-b-2 border-white-100"
-          data-editable="true" data-uuid="69b6889bad13e">
-      </div>
-      <h1 class="text-xl text-center font-libre tracking-widest" data-editable="true" data-uuid="69b6889bad140">
-        WELCOME TO OUR WEDDING</h1>
-      <div class="relative py-8 flex items-center justify-center" data-uuid="69b6889bad141">
-        <span class="text-8xl font-bold text-couple-name opacity-10 select-none pointer-events-none"
-          data-uuid="69b6889bad142">囍</span>
-        <p class="absolute inset-0 flex items-center justify-center text-center font-script text-3xl font-semibold text-black tracking-wide"
-          data-editable="true" data-uuid="69b6889bad143">Cẩm Toàn &amp; Mỹ Ân</p>
-      </div>
-      <p class="vs-attendance-name-text text-center font-body text-gray-500 text-sm italic mb-2"
-        data-uuid="69b6889bad144"></p>
-      <p class="text-center w-[80%] mx-auto text-gray-600 font-crimson" data-editable="true" data-uuid="69b6889bad146">
-        Sau những tháng bên nhau,
-        <br data-uuid="69b6889bad147">chúng mình quyết định bước sang một hành trình mới —
-        <br data-uuid="69b6889bad148">chúng mình sắp kết hôn rồi!
-        <br data-uuid="69b6889bad149">Lễ cưới không chỉ là một lời thông báo,
-        <br data-uuid="69b6889bad14a">mà là khoảnh khắc sum vầy và yêu thương được gửi trao từ tận đáy lòng.
-      </p>
-      <img src="./src/images/end-header.webp" alt="" data-editable="true" data-uuid="69b6889bad14c">
-    </header>
+      .bg-couple-accent {
+        background-color: #af4949;
+      }
 
-    <!-- Section 2: Family / Wedding Invitation Card -->
-    <section data-moveable="true" data-hidable="true" data-copyable="true" data-removable="true"
-      class="relative bg-white rounded-2xl shadow-xl mt-8 mb-8 mx-4 overflow-hidden" data-uuid="69b6889bad14d">
-      <!-- Top decorative border -->
-      <div class="h-1.5 bg-gradient-to-r from-transparent via-[#af4949] to-transparent" data-uuid="69b6889bad14f">
-      </div>
+      .border-couple-accent {
+        border-color: #af4949;
+      }
 
-      <div class="px-8 py-10" data-uuid="69b6889bad150">
-        <!-- Tiêu đề chính -->
-        <div class="text-center mb-10" data-uuid="69b6889bad152">
-          <p class="font-body text-sm tracking-[0.3em] text-gray-400 uppercase mb-3" data-editable="true"
-            data-uuid="69b6889bad153">Wedding Invitation</p>
-          <h2 class="font-display text-2xl text-couple-name mb-4 tracking-widest font-bold" data-editable="true"
-            data-uuid="69b6889bad155">TRÂN TRỌNG KÍNH MỜI</h2>
-          <div class="flex items-center justify-center gap-3 mb-4" data-uuid="69b6889bad156">
-            <div class="w-16 h-px bg-[#af4949] opacity-40" data-uuid="69b6889bad157"></div>
-            <span class="text-couple-name text-sm" data-uuid="69b6889bad159">✿</span>
-            <div class="w-16 h-px bg-[#af4949] opacity-40" data-uuid="69b6889bad15a"></div>
-          </div>
-          <p data-editable="true" class="vs-attendance-name-text font-body text-gray-700 text-lg"
-            data-uuid="69b6889bad15c">Bạn cùng gia đình</p>
-          <p class="font-body text-gray-500 italic mt-2 text-sm" data-editable="true" data-uuid="69b6889bad15d">
-            (Tới dự Lễ Thành Hôn của hai con chúng tôi)</p>
-        </div>
-
-        <!-- Thông tin nhà trai và nhà gái -->
-        <div class="grid grid-cols-2 gap-4 mb-10" data-uuid="69b6889bad15f">
-          <!-- Nhà Trai -->
-          <div class="text-center border-r border-gray-200 pr-4" data-uuid="69b6889bad160">
-            <h3 class="font-display text-base text-couple-name mb-3 tracking-[0.2em] font-semibold" data-editable="true"
-              data-uuid="69b6889bad162">NHÀ TRAI</h3>
-            <div class="w-8 h-px bg-[#af4949] opacity-30 mx-auto mb-3" data-uuid="69b6889bad163"></div>
-            <div class="space-y-1.5" data-uuid="69b6889bad165">
-              <p class="font-body text-gray-700 text-sm" data-editable="true" data-uuid="69b6889bad169">
-                <span class="font-semibold text-gray-500" data-uuid="69b6889bad16b">Bà:</span> Lương Miêu Hưng
-              </p>
-            </div>
-          </div>
-
-          <!-- Nhà Gái -->
-          <div class="text-center pl-4" data-uuid="69b6889bad16d">
-            <h3 class="font-display text-base text-couple-name mb-3 tracking-[0.2em] font-semibold" data-editable="true"
-              data-uuid="69b6889bad16e">NHÀ GÁI</h3>
-            <div class="w-8 h-px bg-[#af4949] opacity-30 mx-auto mb-3" data-uuid="69b6889bad170"></div>
-            <div class="space-y-1.5" data-uuid="69b6889bad171">
-              <p class="font-body text-gray-700 text-sm" data-editable="true" data-uuid="69b6889bad173">
-                <span class="font-semibold text-gray-500" data-uuid="69b6889bad175">Ông:</span> Huỳnh Diệu Huê
-              </p>
-              <p class="font-body text-gray-700 text-sm" data-editable="true" data-uuid="69b6889bad176">
-                <span class="font-semibold text-gray-500" data-uuid="69b6889bad178">Bà:</span> Quan Muội Muội
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tên cặp đôi với trái tim -->
-        <div class="text-center mb-10 py-6 relative" data-uuid="69b6889bad17a">
-          <div class="absolute inset-0 border border-[#af4949] opacity-15 rounded-xl pointer-events-none"
-            data-uuid="69b6889bad17c"></div>
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-4 pointer-events-none"
-            data-uuid="69b6889bad17e">
-            <span class="text-couple-name text-xs tracking-[0.3em] font-display" data-uuid="69b6889bad17f">GROOM &amp;
-              BRIDE</span>
-          </div>
-          <div class="flex items-center justify-center gap-6 pt-2" data-uuid="69b6889bad181">
-            <div class="text-center" data-uuid="69b6889bad183">
-              <p class="font-vibes text-4xl text-couple-name leading-tight" data-editable="true"
-                data-uuid="69b6889bad188">Chú Rể</p>
-              <p class="font-vibes text-4xl text-couple-name leading-tight" data-editable="true"
-                data-uuid="69b6889bad185">Tăng Cẩm Toàn</p>
-            </div>
-            <div class="flex flex-col items-center gap-1" data-uuid="69b6889bad18b">
-              <div class="w-px h-6 bg-[#af4949] opacity-30" data-uuid="69b6889bad18e"></div>
-              <div class="text-3xl text-couple-name" style="animation: heartbeat 2s ease-in-out infinite;"
-                data-editable="true" data-uuid="69b6889bad191">♥</div>
-              <div class="w-px h-6 bg-[#af4949] opacity-30" data-uuid="69b6889bad194"></div>
-            </div>
-            <div class="text-center" data-uuid="69b6889bad196">
-              <p class="font-vibes text-4xl text-couple-name leading-tight" data-editable="true"
-                data-uuid="69b6889bad19c">Cô Dâu</p>
-              <p class="font-vibes text-4xl text-couple-name leading-tight" data-editable="true"
-                data-uuid="69b6889bad199">Quan Mỹ Ân</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Thông tin lễ cưới -->
-        <div class="text-center mb-8 bg-[#fdf6f6] rounded-xl py-6 px-4" data-uuid="69b6889bad19f">
-          <p class="font-body text-xs tracking-[0.3em] text-gray-400 uppercase mb-3" data-editable="true"
-            data-uuid="69b6889bad1a2">Save the Date</p>
-          <h3 class="font-display text-xl text-gray-800 mb-3 font-semibold" data-editable="true"
-            data-uuid="69b6889bad1a5">Tổ chức vào lúc 18 giờ 00</h3>
-          <p class="font-body text-gray-700 text-lg mb-1" data-editable="true" data-uuid="69b6889bad1a7">Chủ Nhật,
-            ngày 12 tháng 04 năm 2026</p>
-          <p class="font-body text-gray-500 italic text-sm" data-editable="true" data-uuid="69b6889bad1ab">
-            (Tức
-            ngày 25 tháng 02 năm 2026 Bính Ngọ)</p>
-        </div>
-
-        <!-- Địa điểm -->
-        <div class="text-center mb-8" data-uuid="69b6889bad1ae">
-          <div class="inline-flex items-center gap-2 mb-3" data-uuid="69b6889bad1b1">
-            <span class="text-couple-name text-lg" data-uuid="69b6889bad1b4">⚲</span>
-            <h4 class="font-display text-lg text-gray-800 font-semibold" data-editable="true" data-uuid="69b6889bad1b7">
-              Tại gia đình Nhà Trai:</h4>
-          </div>
-          <p class="font-body text-gray-700" data-editable="true" data-uuid="69b6889bad1ba">122/80 Hà Tôn Quyền, Phường
-            Minh Phụng, Việt Nam</p>
-        </div>
-        <div class="text-center mb-8" data-uuid="69b6889bad1ae">
-          <div class="inline-flex items-center gap-2 mb-3" data-uuid="69b6889bad1b1">
-            <span class="text-couple-name text-lg" data-uuid="69b6889bad1b4">⚲</span>
-            <h4 class="font-display text-lg text-gray-800 font-semibold" data-editable="true" data-uuid="69b6889bad1b7">
-              Tại gia đình Nhà Gái:</h4>
-          </div>
-          <p class="font-body text-gray-700" data-editable="true" data-uuid="69b6889bad1ba">94 Đường số 21, Phường
-            An Lạc, Việt Nam</p>
-        </div>
-
-        <!-- Lời cảm ơn -->
-        <div class="text-center pt-6 border-t border-gray-100" data-uuid="69b6889bad1bd">
-          <p class="font-body text-gray-500 italic text-sm leading-relaxed" data-editable="true"
-            data-uuid="69b6889bad1c0">Sự hiện diện của Quý khách là niềm vinh hạnh của gia đình chúng tôi!
-          </p>
-        </div>
-
-        <!-- Đường viền trang trí -->
-        <div class="mt-6 flex items-center justify-center gap-3" data-uuid="69b6889bad1c4">
-          <div class="w-12 h-px bg-[#af4949] opacity-30" data-uuid="69b6889bad1c7"></div>
-          <span class="text-couple-name text-xs" data-uuid="69b6889bad1ca">✿</span>
-          <div class="w-12 h-px bg-[#af4949] opacity-30" data-uuid="69b6889bad1ce"></div>
-        </div>
-      </div>
-
-      <!-- Bottom decorative border -->
-      <div class="h-1.5 bg-gradient-to-r from-transparent via-[#af4949] to-transparent" data-uuid="69b6889bad1d1">
-      </div>
-    </section>
-
-    <!-- Section 7: Gallery -->
-    <section data-moveable="true" data-hidable="true" data-copyable="true" data-removable="true" class="py-8"
-      data-uuid="69b6889bad288">
-      <h2
-        class="font-display text-2xl text-center opacity-20 tracking-widest text-couple-name mb-4 font-semibold uppercase"
-        data-editable="true" data-uuid="69b6889bad28c">love you as much as i can</h2>
-      <img src="./src/images/image1.jpg" alt="" class="w-[90%] mx-auto rounded-t-[50%] rounded-b-[20px]"
-        data-editable="true" data-uuid="69b6889bad28f">
-      <p class="text-center text-lg font-body tracking-widest py-12 w-2/3 mx-auto" data-editable="true"
-        data-uuid="69b6889bad294">
-        It is universally acknowledged
-        <br data-uuid="69b6889bad299"> that you are indispensible to me.
-      </p>
-      <div class="flex justify-center w-full" data-uuid="69b6889bad29e">
-        <img src="./src/images/image4.jpg" alt="" class="w-[60%]" data-editable="true" data-uuid="69b6889bad2a3">
-        <p class="w-[40%] flex text-white text-4xl items-center justify-center bg-[#af4949]" data-editable="true"
-          data-uuid="69b6889bad2a8">囍</p>
-      </div>
-      <div class="flex gap-2 w-[80%] ml-auto mt-8" data-uuid="69b6889bad2ac">
-        <img src="./src/images/image5.jpg" alt="" class="w-1/2" data-editable="true" data-uuid="69b6889bad2b1">
-        <img src="./src/images/image1.jpg" alt="" class="w-1/2" data-editable="true" data-uuid="69b6889bad2b6">
-      </div>
-      <p class="text-right text-[16px] p-6 font-body tracking-widest py-12" data-editable="true"
-        data-uuid="69b6889bad2bc">
-        Giữa thế giới rộng lớn,—
-        <br data-uuid="69b6889bad2c1">thật may mắn vì chúng ta tìm thấy nhau —
-        <br data-uuid="69b6889bad2c6">đi qua mọi chặng đường để hôm nay—
-        <br data-uuid="69b6889bad2cb">cùng nắm tay trong ngày cưới.—
-      </p>
-    </section>
-
-    <!-- Section 8: Photos -->
-    <section data-moveable="true" data-hidable="true" data-copyable="true" data-removable="true" class="py-8"
-      data-uuid="69b6889bad2cf">
-      <div class="flex gap-2 w-[90%] mx-auto" data-uuid="69b6889bad2d3">
-        <img src="./src/images/image4.jpg" alt="" class="w-1/2 rounded-tl-[20%]" data-editable="true"
-          data-uuid="69b6889bad2d7">
-        <img src="./src/images/image5.jpg" alt="" class="w-1/2 rounded-tr-[20%]" data-editable="true"
-          data-uuid="69b6889bad2db">
-      </div>
-    </section>
-
-    <!-- Section 9: Countdown -->
-    <section data-moveable="true" data-hidable="true" data-copyable="true" data-removable="true"
-      class="py-12 bg-[#f6ebeb] text-center" data-uuid="69b6889bad2df">
-      <p class="font-body text-xs tracking-[0.3em] text-gray-400 uppercase mb-3" data-editable="true"
-        data-uuid="69b6889bad2e3">Save The Date</p>
-      <h2 class="font-display text-2xl text-couple-name font-semibold mb-8" data-editable="true"
-        data-uuid="69b6889bad2e7">Đếm Ngược</h2>
-      <div id="vs-start-time" style="display:none;" data-editable="true" data-uuid="69b6889bad2eb">
-        2026-04-12T09:00:00
-      </div>
-      <div class="flex justify-center gap-4" data-uuid="69b6889bad2ef">
-        <div class="bg-white rounded-xl px-4 py-5 w-[72px] shadow-sm" data-uuid="69b6889bad2f3">
-          <span class="vs-time-days font-display text-3xl font-semibold text-couple-name block"
-            data-uuid="69b6889bad2f7">00</span>
-          <span class="text-gray-400 text-[8px] mt-2 block tracking-[0.2em] uppercase"
-            data-uuid="69b6889bad2fb">Ngày</span>
-        </div>
-        <div class="bg-white rounded-xl px-4 py-5 w-[72px] shadow-sm" data-uuid="69b6889bad2ff">
-          <span class="vs-time-hours font-display text-3xl font-semibold text-couple-name block"
-            data-uuid="69b6889bad303">00</span>
-          <span class="text-gray-400 text-[8px] mt-2 block tracking-[0.2em] uppercase"
-            data-uuid="69b6889bad308">Giờ</span>
-        </div>
-        <div class="bg-white rounded-xl px-4 py-5 w-[72px] shadow-sm" data-uuid="69b6889bad30c">
-          <span class="vs-time-minutes font-display text-3xl font-semibold text-couple-name block"
-            data-uuid="69b6889bad310">00</span>
-          <span class="text-gray-400 text-[8px] mt-2 block tracking-[0.2em] uppercase"
-            data-uuid="69b6889bad314">Phút</span>
-        </div>
-        <div class="bg-white rounded-xl px-4 py-5 w-[72px] shadow-sm" data-uuid="69b6889bad319">
-          <span class="vs-time-seconds font-display text-3xl font-semibold text-couple-name block"
-            data-uuid="69b6889bad31d">00</span>
-          <span class="text-gray-400 text-[8px] mt-2 block tracking-[0.2em] uppercase"
-            data-uuid="69b6889bad321">Giây</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 10: Address & Map -->
-    <section data-moveable="true" data-hidable="true" data-copyable="true" data-removable="true" class="py-8"
-      data-uuid="69b6889bad325">
-      <h1 class="text-center text-2xl tracking-widest font-semibold text-couple-name py-4 uppercase"
-        data-editable="true" data-uuid="69b6889bad32a">/ address /</h1>
-      <div class="w-[90%] mx-auto rounded-lg p-6" data-uuid="69b6889bad32e">
-        <!-- Address Info -->
-        <div class="text-center mb-6" data-uuid="69b6889bad333">
-          <h3 class="font-display text-xl text-couple-name mb-3 font-semibold" data-editable="true"
-            data-uuid="69b6889bad337">Địa điểm tổ chức</h3>
-          <p class="font-body text-gray-700 text-lg mb-2" data-editable="true" data-uuid="69b6889bad33c">Riverside
-            Palace</p>
-          <p class="font-body text-gray-700 text-lg mb-2" data-editable="true" data-uuid="69b6889bad33c">(Lầu Trệt -
-            Sảnh Jade)</p>
-          <p class="font-body text-gray-600" data-editable="true" data-uuid="69b6889bad340">360D Bến Vân Đồn, Phường
-            Vĩnh Hội, Quận 4, Hồ Chí Minh</p>
-          <p class="font-body text-gray-600" data-editable="true" data-uuid="69b6889bad345">Điện thoại:
-            0933 777 838</p>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-3 justify-center" data-uuid="69b6889bad349">
-          <a href="https://maps.app.goo.gl/oMhvw8pdTPf6ppvp8" target="_blank" rel="noopener noreferrer"
-            class="vs-popup-gmaps bg-couple-accent text-white px-6 py-3 rounded-lg font-body text-center hover:bg-opacity-90 transition-all"
-            data-editable="true" data-uuid="69b6889bad34e">
-            Xem trên Google Maps
-          </a>
-        </div>
-
-        <!-- Additional Info -->
-        <div class="mt-6 pt-6 border-t border-gray-200 text-center" data-uuid="69b6889bad355">
-          <p class="font-body text-gray-600 text-sm" data-editable="true" data-uuid="69b6889bad362">
-            Thời gian: 18:00 PM - 22:00 PM
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 12: Thanks -->
-    <section data-moveable="true" data-hidable="true" data-copyable="true" data-removable="true" class="py-8"
-      data-uuid="69b6889bad463">
-      <h2
-        class="font-display text-center uppercase opacity-40 text-4xl tracking-widest text-couple-name mb-4 font-semibold"
-        data-editable="true" data-uuid="69b6889bad469">Thanks</h2>
-      <h1 class="font-body text-gray-800 text-lg p-6 pl-12 tracking-wide" data-editable="true"
-        data-uuid="69b6889bad46f">
-        Chân thành cảm ơn gia đình,
-        <br data-uuid="69b6889bad475">Người thân và bạn bè
-        <br data-uuid="69b6889bad47a">Đã luôn đồng hành,
-        <br data-uuid="69b6889bad480">Chúc phúc và sẻ chia
-        <br data-uuid="69b6889bad486">Sự hiện diện của mọi người
-        <br data-uuid="69b6889bad48c">Chính là món quà ý nghĩa
-        <br data-uuid="69b6889bad492">Trong ngày trọng đại này.
-      </h1>
-      <img src="./src/images/image1.jpg" alt="" class="w-[80%] ml-auto rounded-tl-[20%]" data-editable="true"
-        data-uuid="69b6889bad498">
-      <h2
-        class="font-display text-left pl-12 py-8 uppercase opacity-40 text-4xl tracking-widest text-couple-name mb-4 font-semibold"
-        data-editable="true" data-uuid="69b6889bad49e">WELCOME</h2>
-      <p class="font-body text-gray-800 text-lg p-6 pl-12 tracking-wide" data-editable="true" data-uuid="69b6889bad4a4">
-        Chào mừng Quý khách
-        <br data-uuid="69b6889bad4aa">đến chung vui cùng chúng tôi
-        <br data-uuid="69b6889bad4b0">trong ngày hạnh phúc trọng đại
-        <br data-uuid="69b6889bad4b6">nơi tình yêu được trọn vẹn
-        <br data-uuid="69b6889bad4bc">và ký ức lưu giữ mãi mãi.
-      </p>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center py-8 border-t border-gray-100" data-moveable="true" data-uuid="69b6889bad652">
-      <div class="flex items-center justify-center gap-3 mb-4" data-uuid="69b6889bad659">
-        <div class="w-12 h-px bg-[#af4949] opacity-30" data-uuid="69b6889bad670"></div>
-        <span class="text-couple-name text-xs" data-uuid="69b6889bad67c">✿</span>
-        <div class="w-12 h-px bg-[#af4949] opacity-30" data-uuid="69b6889bad687"></div>
-      </div>
-      <p class="font-display text-2xl text-couple-name font-medium mb-1" data-editable="true" data-uuid="69b6889bad691">
-        Cẩm Toàn &amp; Mỹ Ân</p>
-      <p class="text-gray-400 text-[10px] tracking-[0.4em]" data-editable="true" data-uuid="69b6889bad69c">12 . 04
-        .
-        2026</p>
-    </footer>
-
-  </div><!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" data-uuid="69b6889bad6ba"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" data-uuid="69b6889bad6c3"></script>
-  <script data-uuid="69b6889bad6cb">new WOW().init();</script>
-  <script data-uuid="69b6889bad6d2">
-    document.querySelectorAll('.vs-qr-content').forEach(function (c) { c.classList.add('vs-hidden') });
-    document.querySelectorAll('.vs-qr-btn').forEach(function (b) {
-      b.style.display = ''; b.style.textAlign = 'center';
-      var p = b.parentElement; var hasContent = p.querySelector('.vs-qr-content'); if (!hasContent) { var sib = b.nextElementSibling; while (sib) { if (sib.classList && sib.classList.contains('vs-qr-content')) { hasContent = sib; break; } sib = sib.nextElementSibling; } } if (!hasContent) { b.style.display = 'none'; return; }
-      b.addEventListener('click', function () {
-        var p = this.parentElement;
-        var c = p.querySelector('.vs-qr-content');
-        if (!c) { var sib = this.nextElementSibling; while (sib) { if (sib.classList && sib.classList.contains('vs-qr-content')) { c = sib; break; } sib = sib.nextElementSibling; } }
-        if (c) { c.classList.remove('vs-hidden'); c.classList.add('vs-reveal'); }
-        this.style.display = 'none';
-      });
-    });
-    document.querySelectorAll('.vs-qr-close').forEach(function (x) {
-      x.addEventListener('click', function () {
-        var c = this.closest('.vs-qr-content');
-        if (c) {
-          c.classList.add('vs-hidden'); c.classList.remove('vs-reveal');
-          var p = c.parentElement;
-          var b = p.querySelector('.vs-qr-btn');
-          if (!b) { var sib = c.previousElementSibling; while (sib) { if (sib.classList && sib.classList.contains('vs-qr-btn')) { b = sib; break; } sib = sib.previousElementSibling; } }
-          if (b) { b.style.display = ''; }
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
         }
-      });
-    });
-    document.querySelectorAll('.vs-coin-anim').forEach(function (coin) {
-      var d = coin.getAttribute('data-delay');
-      if (d) coin.style.animationDelay = d;
-    });
-  </script>
-  <script>function addStyle(e) { let t = document.createElement("style"); t.textContent = e, document.head.append(t) }</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-  <script>new WOW().init();</script>
-  <script>document.querySelectorAll(".vs-qr-btn").forEach(function (b) { b.style.display = "none" }); document.querySelectorAll(".vs-qr-content").forEach(function (c) { c.style.display = "block" }); document.querySelectorAll(".vs-qr-close").forEach(function (x) { x.style.display = "none" });</script>
-  <script>
-    document.getElementById('splash-btn').addEventListener('click', () => {
-      document.getElementById('splash').classList.add('hidden');
 
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+        25% {
+          transform: scale(1.4);
+          opacity: 1;
+        }
 
-      // Play music with playlist
-      const music = document.getElementById('wedding-music');
-      music.play().catch(err => console.log('Audio play failed:', err));
-    });
+        50% {
+          transform: scale(1);
+          opacity: 0.4;
+        }
 
-    const petalsContainer = document.getElementById('petals');
-    for (let i = 0; i < 25; i++) {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = (5 + Math.random() * 5) + 's';
-      petal.style.animationDelay = Math.random() * 5 + 's';
-      petalsContainer.appendChild(petal);
-    }
-
-    // Countdown Timer
-    function updateCountdown() {
-      const startTimeEl = document.getElementById('vs-start-time');
-      if (!startTimeEl) return;
-
-      const targetDate = new Date(startTimeEl.textContent.trim()).getTime();
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        document.querySelector('.vs-time-days').textContent = '00';
-        document.querySelector('.vs-time-hours').textContent = '00';
-        document.querySelector('.vs-time-minutes').textContent = '00';
-        document.querySelector('.vs-time-seconds').textContent = '00';
-        return;
+        75% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      .fade-bottom {
+        position: relative;
+        border-radius: 50% 50% 0 0;
+        overflow: hidden;
+      }
 
-      document.querySelector('.vs-time-days').textContent = String(days).padStart(2, '0');
-      document.querySelector('.vs-time-hours').textContent = String(hours).padStart(2, '0');
-      document.querySelector('.vs-time-minutes').textContent = String(minutes).padStart(2, '0');
-      document.querySelector('.vs-time-seconds').textContent = String(seconds).padStart(2, '0');
-    }
+      .fade-bottom::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.85) 0%,
+          transparent 100%
+        );
+        pointer-events: none;
+        z-index: 10;
+      }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-</body>
+      .fade-bottom::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(255, 255, 255, 0.7) 50%,
+          rgb(255, 255, 255) 100%
+        );
+        pointer-events: none;
+        z-index: 10;
+      }
 
+      /* QR toggle */
+      .vs-qr-content.vs-hidden {
+        display: none;
+      }
+
+      .vs-qr-content.vs-reveal {
+        animation: qr-reveal 0.4s ease-out;
+      }
+
+      @keyframes qr-reveal {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Form */
+      .form-input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #f9fafb;
+        color: #1a1a1a;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 14px;
+        transition: border-color 0.3s;
+        outline: none;
+      }
+
+      .form-input:focus {
+        border-color: #af4949;
+      }
+
+      .form-input::placeholder {
+        color: #9ca3af;
+      }
+
+      .form-select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23757575'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 40px;
+      }
+
+      .radio-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding: 10px 14px;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        transition: all 0.3s;
+      }
+
+      .radio-option:has(input:checked) {
+        background: #fdf6f6;
+        border-color: #af4949;
+      }
+
+      .radio-option input[type="radio"] {
+        accent-color: #af4949;
+      }
+
+      /* FLOATING PETALS */
+      .petals {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 9999;
+      }
+
+      .petal {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: radial-gradient(circle, #ffb6c1, #ff69b4);
+        border-radius: 50% 50% 50% 0;
+        opacity: 0.7;
+        transform: rotate(45deg);
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-10vh) translateX(0) rotate(0deg);
+          opacity: 0;
+        }
+
+        10% {
+          opacity: 0.8;
+        }
+
+        100% {
+          transform: translateY(110vh) translateX(50px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* SPLASH SCREEN */
+      #splash {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        transition: opacity 0.6s ease;
+      }
+
+      #splash.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .splash-content {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 50px;
+        box-shadow: 0 20px 60px rgba(175, 73, 73, 0.2);
+        text-align: center;
+        max-width: 720px;
+      }
+
+      .splash-heart {
+        font-size: 32px;
+        color: white;
+        background-color: #af4949;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+
+      .splash-names {
+        font-size: 42px;
+        color: #af4949;
+        margin-bottom: 16px;
+        line-height: 1.2;
+        position: relative;
+        display: inline-block;
+        padding: 0 60px 10px;
+        border-bottom: 1px solid #af4949;
+      }
+
+      .splash-names::before,
+      .splash-names::after {
+        content: "♥";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #af4949;
+      }
+
+      .splash-names::before {
+        left: 20px;
+      }
+
+      .splash-names::after {
+        right: 20px;
+      }
+
+      .splash-date {
+        font-size: 16px;
+        color: #5a3e4d;
+        margin-bottom: 10px;
+      }
+
+      .splash-invite {
+        font-size: 20px;
+        color: #666;
+        margin-bottom: 8px;
+        font-weight: 800;
+      }
+
+      .splash-guest-name {
+        font-family: "Playfair Display", serif;
+        font-size: 20px;
+        color: #af4949;
+        font-weight: 600;
+        margin-bottom: 24px;
+        min-height: 28px;
+        text-transform: uppercase;
+      }
+
+      #splash-btn {
+        background: linear-gradient(135deg, #af4949, #c45858);
+        color: #fff;
+        border: none;
+        padding: 14px 36px;
+        border-radius: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(175, 73, 73, 0.35);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      #splash-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 32px rgba(175, 73, 73, 0.5);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="splash">
+      <div class="splash-content">
+        <div class="splash-heart">♥</div>
+        <div class="splash-names font-script">Cẩm Toàn & Mỹ Ân</div>
+        <div class="splash-date">12 tháng 04, 2026</div>
+        <div class="splash-invite font-body">Kính mời</div>
+        <div class="splash-guest-name" id="splash-guest-name"></div>
+        <button id="splash-btn">💌 Mở thiệp cưới</button>
+      </div>
+    </div>
+    <audio id="wedding-music" loop>
+      <source src="./src/audio/Violin.mp3" type="audio/mpeg" />
+    </audio>
+    <script>
+      // Guest data
+      const guestData = {
+        phat: "Lạc Vĩnh Phát",
+        minhhung: "Đỗ Minh Hùng",
+        kietzhang: "Giang Trí Kiệt",
+        trilac: "Gia Đình Trí Lạc",
+        samset: "Văn Huyền Thảo Nguyên - SS",
+        anhthomas: "Anh Thomas",
+        AnhJack: "Anh Jack",
+        duongdan: "Dượng Đàn",
+        vuong: "Em Vương",
+        chuvan: "Chú Văn",
+        duongphan: "Dượng Phan",
+        hung: "Gia Đình Hùng",
+        quy: "Lữ Thuận Quý",
+        trinh: "Gia Đình Anh Quốc Huy",
+        CauViet: "Cậu Việt",
+        Su: "Tô Hỷ Tú",
+        an: "Cô Dâu của Xìn",
+      };
+
+      // Lấy tên khách từ URL params
+      const urlParams = new URLSearchParams(window.location.search);
+      const nameKey = urlParams.get("name");
+      if (nameKey && guestData[nameKey]) {
+        const guestNameEl = document.getElementById("splash-guest-name");
+        if (guestNameEl) {
+          guestNameEl.textContent = guestData[nameKey];
+        }
+      }
+    </script>
+    <div class="petals" id="petals"></div>
+    <div class="max-w-[640px] mx-auto" data-uuid="69b6889bad125">
+      <!-- Section 1: Header -->
+      <header
+        data-moveable="true"
+        data-hidable="true"
+        data-uuid="69b6889bad135"
+      >
+        <div
+          class="flex justify-between items-center px-4"
+          data-uuid="69b6889bad137"
+        >
+          <h1
+            class="text-2xl font-script"
+            data-editable="true"
+            data-uuid="69b6889bad138"
+          >
+            2026
+          </h1>
+          <p
+            class="text-xs text-gray-600"
+            data-editable="true"
+            data-uuid="69b6889bad139"
+          >
+            Nhà có hỷ, mời bạn đến chung vui
+          </p>
+          <h1
+            class="text-2xl font-script"
+            data-editable="true"
+            data-uuid="69b6889bad13b"
+          >
+            12/04
+          </h1>
+        </div>
+        <h1
+          class="font-display text-center mt-2 mb-4"
+          data-editable="true"
+          data-uuid="69b6889bad13c"
+        >
+          Wedding Invitation
+        </h1>
+        <div class="fade-bottom mb-6" data-uuid="69b6889bad13d">
+          <img
+            src="./src/images/image5.jpg"
+            alt=""
+            class="rounded-t-[50%] w-full border-b-2 border-white-100"
+            data-editable="true"
+            data-uuid="69b6889bad13e"
+          />
+        </div>
+        <h1
+          class="text-xl text-center font-libre tracking-widest"
+          data-editable="true"
+          data-uuid="69b6889bad140"
+        >
+          WELCOME TO OUR WEDDING
+        </h1>
+        <div
+          class="relative py-8 flex items-center justify-center"
+          data-uuid="69b6889bad141"
+        >
+          <span
+            class="text-8xl font-bold text-couple-name opacity-10 select-none pointer-events-none"
+            data-uuid="69b6889bad142"
+            >囍</span
+          >
+          <p
+            class="absolute inset-0 flex items-center justify-center text-center font-script text-3xl font-semibold text-black tracking-wide"
+            data-editable="true"
+            data-uuid="69b6889bad143"
+          >
+            Cẩm Toàn &amp; Mỹ Ân
+          </p>
+        </div>
+        <p
+          class="vs-attendance-name-text text-center font-body text-gray-500 text-sm italic mb-2"
+          data-uuid="69b6889bad144"
+        ></p>
+        <p
+          class="text-center w-[80%] mx-auto text-gray-600 font-crimson"
+          data-editable="true"
+          data-uuid="69b6889bad146"
+        >
+          Sau những tháng bên nhau,
+          <br data-uuid="69b6889bad147" />chúng mình quyết định bước sang một
+          hành trình mới — <br data-uuid="69b6889bad148" />chúng mình sắp kết
+          hôn rồi! <br data-uuid="69b6889bad149" />Lễ cưới không chỉ là một lời
+          thông báo, <br data-uuid="69b6889bad14a" />mà là khoảnh khắc sum vầy
+          và yêu thương được gửi trao từ tận đáy lòng.
+        </p>
+        <img
+          src="./src/images/end-header.webp"
+          alt=""
+          data-editable="true"
+          data-uuid="69b6889bad14c"
+        />
+      </header>
+
+      <!-- Section 2: Family / Wedding Invitation Card -->
+      <section
+        data-moveable="true"
+        data-hidable="true"
+        data-copyable="true"
+        data-removable="true"
+        class="relative bg-white rounded-2xl shadow-xl mt-8 mb-8 mx-4 overflow-hidden"
+        data-uuid="69b6889bad14d"
+      >
+        <!-- Top decorative border -->
+        <div
+          class="h-1.5 bg-gradient-to-r from-transparent via-[#af4949] to-transparent"
+          data-uuid="69b6889bad14f"
+        ></div>
+
+        <div class="px-8 py-10" data-uuid="69b6889bad150">
+          <!-- Tiêu đề chính -->
+          <div class="text-center mb-10" data-uuid="69b6889bad152">
+            <p
+              class="font-body text-sm tracking-[0.3em] text-gray-400 uppercase mb-3"
+              data-editable="true"
+              data-uuid="69b6889bad153"
+            >
+              Wedding Invitation
+            </p>
+            <h2
+              class="font-display text-2xl text-couple-name mb-4 tracking-widest font-bold"
+              data-editable="true"
+              data-uuid="69b6889bad155"
+            >
+              TRÂN TRỌNG KÍNH MỜI
+            </h2>
+            <div
+              class="flex items-center justify-center gap-3 mb-4"
+              data-uuid="69b6889bad156"
+            >
+              <div
+                class="w-16 h-px bg-[#af4949] opacity-40"
+                data-uuid="69b6889bad157"
+              ></div>
+              <span class="text-couple-name text-sm" data-uuid="69b6889bad159"
+                >✿</span
+              >
+              <div
+                class="w-16 h-px bg-[#af4949] opacity-40"
+                data-uuid="69b6889bad15a"
+              ></div>
+            </div>
+            <p
+              data-editable="true"
+              class="vs-attendance-name-text font-body text-gray-700 text-lg"
+              data-uuid="69b6889bad15c"
+            >
+              Bạn cùng gia đình
+            </p>
+            <p
+              class="font-body text-gray-500 italic mt-2 text-sm"
+              data-editable="true"
+              data-uuid="69b6889bad15d"
+            >
+              (Tới dự Lễ Thành Hôn của hai con chúng tôi)
+            </p>
+          </div>
+
+          <!-- Thông tin nhà trai và nhà gái -->
+          <div class="grid grid-cols-2 gap-4 mb-10" data-uuid="69b6889bad15f">
+            <!-- Nhà Trai -->
+            <div
+              class="text-center border-r border-gray-200 pr-4"
+              data-uuid="69b6889bad160"
+            >
+              <h3
+                class="font-display text-base text-couple-name mb-3 tracking-[0.2em] font-semibold"
+                data-editable="true"
+                data-uuid="69b6889bad162"
+              >
+                NHÀ TRAI
+              </h3>
+              <div
+                class="w-8 h-px bg-[#af4949] opacity-30 mx-auto mb-3"
+                data-uuid="69b6889bad163"
+              ></div>
+              <div class="space-y-1.5" data-uuid="69b6889bad165">
+                <p
+                  class="font-body text-gray-700 text-sm"
+                  data-editable="true"
+                  data-uuid="69b6889bad169"
+                >
+                  <span
+                    class="font-semibold text-gray-500"
+                    data-uuid="69b6889bad16b"
+                    >Bà:</span
+                  >
+                  Lương Miêu Hưng
+                </p>
+              </div>
+            </div>
+
+            <!-- Nhà Gái -->
+            <div class="text-center pl-4" data-uuid="69b6889bad16d">
+              <h3
+                class="font-display text-base text-couple-name mb-3 tracking-[0.2em] font-semibold"
+                data-editable="true"
+                data-uuid="69b6889bad16e"
+              >
+                NHÀ GÁI
+              </h3>
+              <div
+                class="w-8 h-px bg-[#af4949] opacity-30 mx-auto mb-3"
+                data-uuid="69b6889bad170"
+              ></div>
+              <div class="space-y-1.5" data-uuid="69b6889bad171">
+                <p
+                  class="font-body text-gray-700 text-sm"
+                  data-editable="true"
+                  data-uuid="69b6889bad173"
+                >
+                  <span
+                    class="font-semibold text-gray-500"
+                    data-uuid="69b6889bad175"
+                    >Ông:</span
+                  >
+                  Huỳnh Diệu Huê
+                </p>
+                <p
+                  class="font-body text-gray-700 text-sm"
+                  data-editable="true"
+                  data-uuid="69b6889bad176"
+                >
+                  <span
+                    class="font-semibold text-gray-500"
+                    data-uuid="69b6889bad178"
+                    >Bà:</span
+                  >
+                  Quan Muội Muội
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tên cặp đôi với trái tim -->
+          <div
+            class="text-center mb-10 py-6 relative"
+            data-uuid="69b6889bad17a"
+          >
+            <div
+              class="absolute inset-0 border border-[#af4949] opacity-15 rounded-xl pointer-events-none"
+              data-uuid="69b6889bad17c"
+            ></div>
+            <div
+              class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-4 pointer-events-none"
+              data-uuid="69b6889bad17e"
+            >
+              <span
+                class="text-couple-name text-xs tracking-[0.3em] font-display"
+                data-uuid="69b6889bad17f"
+                >GROOM &amp; BRIDE</span
+              >
+            </div>
+            <div
+              class="flex items-center justify-center gap-6 pt-2"
+              data-uuid="69b6889bad181"
+            >
+              <div class="text-center" data-uuid="69b6889bad183">
+                <p
+                  class="font-vibes text-4xl text-couple-name leading-tight"
+                  data-editable="true"
+                  data-uuid="69b6889bad188"
+                >
+                  Chú Rể
+                </p>
+                <p
+                  class="font-vibes text-4xl text-couple-name leading-tight"
+                  data-editable="true"
+                  data-uuid="69b6889bad185"
+                >
+                  Tăng Cẩm Toàn
+                </p>
+              </div>
+              <div
+                class="flex flex-col items-center gap-1"
+                data-uuid="69b6889bad18b"
+              >
+                <div
+                  class="w-px h-6 bg-[#af4949] opacity-30"
+                  data-uuid="69b6889bad18e"
+                ></div>
+                <div
+                  class="text-3xl text-couple-name"
+                  style="animation: heartbeat 2s ease-in-out infinite"
+                  data-editable="true"
+                  data-uuid="69b6889bad191"
+                >
+                  ♥
+                </div>
+                <div
+                  class="w-px h-6 bg-[#af4949] opacity-30"
+                  data-uuid="69b6889bad194"
+                ></div>
+              </div>
+              <div class="text-center" data-uuid="69b6889bad196">
+                <p
+                  class="font-vibes text-4xl text-couple-name leading-tight"
+                  data-editable="true"
+                  data-uuid="69b6889bad19c"
+                >
+                  Cô Dâu
+                </p>
+                <p
+                  class="font-vibes text-4xl text-couple-name leading-tight"
+                  data-editable="true"
+                  data-uuid="69b6889bad199"
+                >
+                  Quan Mỹ Ân
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thông tin lễ cưới -->
+          <div
+            class="text-center mb-8 bg-[#fdf6f6] rounded-xl py-6 px-4"
+            data-uuid="69b6889bad19f"
+          >
+            <p
+              class="font-body text-xs tracking-[0.3em] text-gray-400 uppercase mb-3"
+              data-editable="true"
+              data-uuid="69b6889bad1a2"
+            >
+              Save the Date
+            </p>
+            <h3
+              class="font-display text-xl text-gray-800 mb-3 font-semibold"
+              data-editable="true"
+              data-uuid="69b6889bad1a5"
+            >
+              Tổ chức vào lúc 18 giờ 00
+            </h3>
+            <p
+              class="font-body text-gray-700 text-lg mb-1"
+              data-editable="true"
+              data-uuid="69b6889bad1a7"
+            >
+              Chủ Nhật, ngày 12 tháng 04 năm 2026
+            </p>
+            <p
+              class="font-body text-gray-500 italic text-sm"
+              data-editable="true"
+              data-uuid="69b6889bad1ab"
+            >
+              (Nhằm ngày 25 tháng 02 năm 2026 Bính Ngọ)
+            </p>
+          </div>
+
+          <!-- Địa điểm -->
+          <div class="text-center mb-8" data-uuid="69b6889bad1ae">
+            <div
+              class="inline-flex items-center gap-2 mb-3"
+              data-uuid="69b6889bad1b1"
+            >
+              <span class="text-couple-name text-lg" data-uuid="69b6889bad1b4"
+                >⚲</span
+              >
+              <h4
+                class="font-display text-lg text-gray-800 font-semibold"
+                data-editable="true"
+                data-uuid="69b6889bad1b7"
+              >
+                Gia đình Nhà Trai:
+              </h4>
+            </div>
+            <p
+              class="font-body text-gray-700"
+              data-editable="true"
+              data-uuid="69b6889bad1ba"
+            >
+              122/80 Hà Tôn Quyền, Phường Minh Phụng, TP.HCM
+            </p>
+          </div>
+          <div class="text-center mb-8" data-uuid="69b6889bad1ae">
+            <div
+              class="inline-flex items-center gap-2 mb-3"
+              data-uuid="69b6889bad1b1"
+            >
+              <span class="text-couple-name text-lg" data-uuid="69b6889bad1b4"
+                >⚲</span
+              >
+              <h4
+                class="font-display text-lg text-gray-800 font-semibold"
+                data-editable="true"
+                data-uuid="69b6889bad1b7"
+              >
+                Gia đình Nhà Gái:
+              </h4>
+            </div>
+            <p
+              class="font-body text-gray-700"
+              data-editable="true"
+              data-uuid="69b6889bad1ba"
+            >
+              94 Đường số 21, Phường An Lạc, TP.HCM
+            </p>
+          </div>
+
+          <!-- Lời cảm ơn -->
+          <div
+            class="text-center pt-6 border-t border-gray-100"
+            data-uuid="69b6889bad1bd"
+          >
+            <p
+              class="font-body text-gray-500 italic text-sm leading-relaxed"
+              data-editable="true"
+              data-uuid="69b6889bad1c0"
+            >
+              Sự hiện diện của Quý khách là niềm vinh hạnh của gia đình chúng
+              tôi!
+            </p>
+          </div>
+
+          <!-- Đường viền trang trí -->
+          <div
+            class="mt-6 flex items-center justify-center gap-3"
+            data-uuid="69b6889bad1c4"
+          >
+            <div
+              class="w-12 h-px bg-[#af4949] opacity-30"
+              data-uuid="69b6889bad1c7"
+            ></div>
+            <span class="text-couple-name text-xs" data-uuid="69b6889bad1ca"
+              >✿</span
+            >
+            <div
+              class="w-12 h-px bg-[#af4949] opacity-30"
+              data-uuid="69b6889bad1ce"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Bottom decorative border -->
+        <div
+          class="h-1.5 bg-gradient-to-r from-transparent via-[#af4949] to-transparent"
+          data-uuid="69b6889bad1d1"
+        ></div>
+      </section>
+
+      <!-- Section 7: Gallery -->
+      <section
+        data-moveable="true"
+        data-hidable="true"
+        data-copyable="true"
+        data-removable="true"
+        class="py-8"
+        data-uuid="69b6889bad288"
+      >
+        <h2
+          class="font-display text-2xl text-center opacity-20 tracking-widest text-couple-name mb-4 font-semibold uppercase"
+          data-editable="true"
+          data-uuid="69b6889bad28c"
+        >
+          love you as much as i can
+        </h2>
+        <img
+          src="./src/images/image1.jpg"
+          alt=""
+          class="w-[90%] mx-auto rounded-t-[50%] rounded-b-[20px]"
+          data-editable="true"
+          data-uuid="69b6889bad28f"
+        />
+        <p
+          class="text-center text-lg font-body tracking-widest py-12 w-2/3 mx-auto"
+          data-editable="true"
+          data-uuid="69b6889bad294"
+        >
+          It is universally acknowledged
+          <br data-uuid="69b6889bad299" />
+          that you are indispensible to me.
+        </p>
+        <div class="flex justify-center w-full" data-uuid="69b6889bad29e">
+          <img
+            src="./src/images/image4.jpg"
+            alt=""
+            class="w-[60%]"
+            data-editable="true"
+            data-uuid="69b6889bad2a3"
+          />
+          <p
+            class="w-[40%] flex text-white text-4xl items-center justify-center bg-[#af4949]"
+            data-editable="true"
+            data-uuid="69b6889bad2a8"
+          >
+            囍
+          </p>
+        </div>
+        <div class="flex gap-2 w-[80%] ml-auto mt-8" data-uuid="69b6889bad2ac">
+          <img
+            src="./src/images/image5.jpg"
+            alt=""
+            class="w-1/2"
+            data-editable="true"
+            data-uuid="69b6889bad2b1"
+          />
+          <img
+            src="./src/images/image1.jpg"
+            alt=""
+            class="w-1/2"
+            data-editable="true"
+            data-uuid="69b6889bad2b6"
+          />
+        </div>
+        <p
+          class="text-right text-[16px] p-6 font-body tracking-widest py-12"
+          data-editable="true"
+          data-uuid="69b6889bad2bc"
+        >
+          Giữa thế giới rộng lớn,—
+          <br data-uuid="69b6889bad2c1" />thật may mắn vì chúng ta tìm thấy nhau
+          — <br data-uuid="69b6889bad2c6" />đi qua mọi chặng đường để hôm nay—
+          <br data-uuid="69b6889bad2cb" />cùng nắm tay trong ngày cưới.—
+        </p>
+      </section>
+
+      <!-- Section 8: Photos -->
+      <section
+        data-moveable="true"
+        data-hidable="true"
+        data-copyable="true"
+        data-removable="true"
+        class="py-8"
+        data-uuid="69b6889bad2cf"
+      >
+        <div class="flex gap-2 w-[90%] mx-auto" data-uuid="69b6889bad2d3">
+          <img
+            src="./src/images/image4.jpg"
+            alt=""
+            class="w-1/2 rounded-tl-[20%]"
+            data-editable="true"
+            data-uuid="69b6889bad2d7"
+          />
+          <img
+            src="./src/images/image5.jpg"
+            alt=""
+            class="w-1/2 rounded-tr-[20%]"
+            data-editable="true"
+            data-uuid="69b6889bad2db"
+          />
+        </div>
+      </section>
+
+      <!-- Section 9: Countdown -->
+      <section
+        data-moveable="true"
+        data-hidable="true"
+        data-copyable="true"
+        data-removable="true"
+        class="py-12 bg-[#f6ebeb] text-center"
+        data-uuid="69b6889bad2df"
+      >
+        <p
+          class="font-body text-xs tracking-[0.3em] text-gray-400 uppercase mb-3"
+          data-editable="true"
+          data-uuid="69b6889bad2e3"
+        >
+          Save The Date
+        </p>
+        <h2
+          class="font-display text-2xl text-couple-name font-semibold mb-8"
+          data-editable="true"
+          data-uuid="69b6889bad2e7"
+        >
+          Đếm Ngược
+        </h2>
+        <div
+          id="vs-start-time"
+          style="display: none"
+          data-editable="true"
+          data-uuid="69b6889bad2eb"
+        >
+          2026-04-12T09:00:00
+        </div>
+        <div class="flex justify-center gap-4" data-uuid="69b6889bad2ef">
+          <div
+            class="bg-white rounded-xl px-4 py-5 w-[72px] shadow-sm"
+            data-uuid="69b6889bad2f3"
+          >
+            <span
+              class="vs-time-days font-display text-3xl font-semibold text-couple-name block"
+              data-uuid="69b6889bad2f7"
+              >00</span
+            >
+            <span
+              class="text-gray-400 text-[8px] mt-2 block tracking-[0.2em] uppercase"
+              data-uuid="69b6889bad2fb"
+              >Ngày</span
+            >
+          </div>
+          <div
+            class="bg-white rounded-xl px-4 py-5 w-[72px] shadow-sm"
+            data-uuid="69b6889bad2ff"
+          >
+            <span
+              class="vs-time-hours font-display text-3xl font-semibold text-couple-name block"
+              data-uuid="69b6889bad303"
+              >00</span
+            >
+            <span
+              class="text-gray-400 text-[8px] mt-2 block tracking-[0.2em] uppercase"
+              data-uuid="69b6889bad308"
+              >Giờ</span
+            >
+          </div>
+          <div
+            class="bg-white rounded-xl px-4 py-5 w-[72px] shadow-sm"
+            data-uuid="69b6889bad30c"
+          >
+            <span
+              class="vs-time-minutes font-display text-3xl font-semibold text-couple-name block"
+              data-uuid="69b6889bad310"
+              >00</span
+            >
+            <span
+              class="text-gray-400 text-[8px] mt-2 block tracking-[0.2em] uppercase"
+              data-uuid="69b6889bad314"
+              >Phút</span
+            >
+          </div>
+          <div
+            class="bg-white rounded-xl px-4 py-5 w-[72px] shadow-sm"
+            data-uuid="69b6889bad319"
+          >
+            <span
+              class="vs-time-seconds font-display text-3xl font-semibold text-couple-name block"
+              data-uuid="69b6889bad31d"
+              >00</span
+            >
+            <span
+              class="text-gray-400 text-[8px] mt-2 block tracking-[0.2em] uppercase"
+              data-uuid="69b6889bad321"
+              >Giây</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 10: Address & Map -->
+      <section
+        data-moveable="true"
+        data-hidable="true"
+        data-copyable="true"
+        data-removable="true"
+        class="py-8"
+        data-uuid="69b6889bad325"
+      >
+        <h1
+          class="text-center text-2xl tracking-widest font-semibold text-couple-name py-4 uppercase"
+          data-editable="true"
+          data-uuid="69b6889bad32a"
+        >
+          / address /
+        </h1>
+        <div class="w-[90%] mx-auto rounded-lg p-6" data-uuid="69b6889bad32e">
+          <!-- Address Info -->
+          <div class="text-center mb-6" data-uuid="69b6889bad333">
+            <h3
+              class="font-display text-xl text-couple-name mb-3 font-semibold"
+              data-editable="true"
+              data-uuid="69b6889bad337"
+            >
+              Địa điểm tổ chức
+            </h3>
+            <p
+              class="font-body text-gray-700 text-lg mb-2"
+              data-editable="true"
+              data-uuid="69b6889bad33c"
+            >
+              Riverside Palace
+            </p>
+            <p
+              class="font-body text-gray-700 text-lg mb-2"
+              data-editable="true"
+              data-uuid="69b6889bad33c"
+            >
+              (Lầu Trệt - Sảnh Jade)
+            </p>
+            <p
+              class="font-body text-gray-600"
+              data-editable="true"
+              data-uuid="69b6889bad340"
+            >
+              360D Bến Vân Đồn, Phường Vĩnh Hội, TP Hồ Chí Minh
+            </p>
+            <p
+              class="font-body text-gray-600"
+              data-editable="true"
+              data-uuid="69b6889bad345"
+            >
+              Điện thoại: 0933 777 838
+            </p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div
+            class="flex flex-col sm:flex-row gap-3 justify-center"
+            data-uuid="69b6889bad349"
+          >
+            <a
+              href="https://maps.app.goo.gl/oMhvw8pdTPf6ppvp8"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="vs-popup-gmaps bg-couple-accent text-white px-6 py-3 rounded-lg font-body text-center hover:bg-opacity-90 transition-all"
+              data-editable="true"
+              data-uuid="69b6889bad34e"
+            >
+              Xem trên Google Maps
+            </a>
+          </div>
+
+          <!-- Additional Info -->
+          <div
+            class="mt-6 pt-6 border-t border-gray-200 text-center"
+            data-uuid="69b6889bad355"
+          >
+            <p
+              class="font-body text-gray-600 text-sm"
+              data-editable="true"
+              data-uuid="69b6889bad362"
+            >
+              Thời gian đón Khách: 18:00 PM - Khai Tiệc : 19:00 PM
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 12: Thanks -->
+      <section
+        data-moveable="true"
+        data-hidable="true"
+        data-copyable="true"
+        data-removable="true"
+        class="py-8"
+        data-uuid="69b6889bad463"
+      >
+        <h2
+          class="font-display text-center uppercase opacity-40 text-4xl tracking-widest text-couple-name mb-4 font-semibold"
+          data-editable="true"
+          data-uuid="69b6889bad469"
+        >
+          Thanks
+        </h2>
+        <h1
+          class="font-body text-gray-800 text-lg p-6 pl-12 tracking-wide"
+          data-editable="true"
+          data-uuid="69b6889bad46f"
+        >
+          Chân thành cảm ơn gia đình,
+          <br data-uuid="69b6889bad475" />Người thân và bạn bè
+          <br data-uuid="69b6889bad47a" />Đã luôn đồng hành,
+          <br data-uuid="69b6889bad480" />Chúc phúc và sẻ chia
+          <br data-uuid="69b6889bad486" />Sự hiện diện của mọi người
+          <br data-uuid="69b6889bad48c" />Chính là món quà ý nghĩa
+          <br data-uuid="69b6889bad492" />Trong ngày trọng đại này.
+        </h1>
+        <img
+          src="./src/images/image1.jpg"
+          alt=""
+          class="w-[80%] ml-auto rounded-tl-[20%]"
+          data-editable="true"
+          data-uuid="69b6889bad498"
+        />
+        <h2
+          class="font-display text-left pl-12 py-8 uppercase opacity-40 text-4xl tracking-widest text-couple-name mb-4 font-semibold"
+          data-editable="true"
+          data-uuid="69b6889bad49e"
+        >
+          WELCOME
+        </h2>
+        <p
+          class="font-body text-gray-800 text-lg p-6 pl-12 tracking-wide"
+          data-editable="true"
+          data-uuid="69b6889bad4a4"
+        >
+          Chào mừng Quý khách
+          <br data-uuid="69b6889bad4aa" />đến chung vui cùng chúng tôi
+          <br data-uuid="69b6889bad4b0" />trong ngày hạnh phúc trọng đại
+          <br data-uuid="69b6889bad4b6" />nơi tình yêu được trọn vẹn
+          <br data-uuid="69b6889bad4bc" />và ký ức lưu giữ mãi mãi.
+        </p>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="text-center py-8 border-t border-gray-100"
+        data-moveable="true"
+        data-uuid="69b6889bad652"
+      >
+        <div
+          class="flex items-center justify-center gap-3 mb-4"
+          data-uuid="69b6889bad659"
+        >
+          <div
+            class="w-12 h-px bg-[#af4949] opacity-30"
+            data-uuid="69b6889bad670"
+          ></div>
+          <span class="text-couple-name text-xs" data-uuid="69b6889bad67c"
+            >✿</span
+          >
+          <div
+            class="w-12 h-px bg-[#af4949] opacity-30"
+            data-uuid="69b6889bad687"
+          ></div>
+        </div>
+        <p
+          class="font-display text-2xl text-couple-name font-medium mb-1"
+          data-editable="true"
+          data-uuid="69b6889bad691"
+        >
+          Cẩm Toàn &amp; Mỹ Ân
+        </p>
+        <p
+          class="text-gray-400 text-[10px] tracking-[0.4em]"
+          data-editable="true"
+          data-uuid="69b6889bad69c"
+        >
+          12 . 04 . 2026
+        </p>
+      </footer>
+    </div>
+    <!-- Scripts -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      data-uuid="69b6889bad6ba"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
+      data-uuid="69b6889bad6c3"
+    ></script>
+    <script data-uuid="69b6889bad6cb">
+      new WOW().init();
+    </script>
+    <script data-uuid="69b6889bad6d2">
+      document.querySelectorAll(".vs-qr-content").forEach(function (c) {
+        c.classList.add("vs-hidden");
+      });
+      document.querySelectorAll(".vs-qr-btn").forEach(function (b) {
+        b.style.display = "";
+        b.style.textAlign = "center";
+        var p = b.parentElement;
+        var hasContent = p.querySelector(".vs-qr-content");
+        if (!hasContent) {
+          var sib = b.nextElementSibling;
+          while (sib) {
+            if (sib.classList && sib.classList.contains("vs-qr-content")) {
+              hasContent = sib;
+              break;
+            }
+            sib = sib.nextElementSibling;
+          }
+        }
+        if (!hasContent) {
+          b.style.display = "none";
+          return;
+        }
+        b.addEventListener("click", function () {
+          var p = this.parentElement;
+          var c = p.querySelector(".vs-qr-content");
+          if (!c) {
+            var sib = this.nextElementSibling;
+            while (sib) {
+              if (sib.classList && sib.classList.contains("vs-qr-content")) {
+                c = sib;
+                break;
+              }
+              sib = sib.nextElementSibling;
+            }
+          }
+          if (c) {
+            c.classList.remove("vs-hidden");
+            c.classList.add("vs-reveal");
+          }
+          this.style.display = "none";
+        });
+      });
+      document.querySelectorAll(".vs-qr-close").forEach(function (x) {
+        x.addEventListener("click", function () {
+          var c = this.closest(".vs-qr-content");
+          if (c) {
+            c.classList.add("vs-hidden");
+            c.classList.remove("vs-reveal");
+            var p = c.parentElement;
+            var b = p.querySelector(".vs-qr-btn");
+            if (!b) {
+              var sib = c.previousElementSibling;
+              while (sib) {
+                if (sib.classList && sib.classList.contains("vs-qr-btn")) {
+                  b = sib;
+                  break;
+                }
+                sib = sib.previousElementSibling;
+              }
+            }
+            if (b) {
+              b.style.display = "";
+            }
+          }
+        });
+      });
+      document.querySelectorAll(".vs-coin-anim").forEach(function (coin) {
+        var d = coin.getAttribute("data-delay");
+        if (d) coin.style.animationDelay = d;
+      });
+    </script>
+    <script>
+      function addStyle(e) {
+        let t = document.createElement("style");
+        (t.textContent = e), document.head.append(t);
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+    <script>
+      document.querySelectorAll(".vs-qr-btn").forEach(function (b) {
+        b.style.display = "none";
+      });
+      document.querySelectorAll(".vs-qr-content").forEach(function (c) {
+        c.style.display = "block";
+      });
+      document.querySelectorAll(".vs-qr-close").forEach(function (x) {
+        x.style.display = "none";
+      });
+    </script>
+    <script>
+      document.getElementById("splash-btn").addEventListener("click", () => {
+        document.getElementById("splash").classList.add("hidden");
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        // Play music with playlist
+        const music = document.getElementById("wedding-music");
+        music.play().catch((err) => console.log("Audio play failed:", err));
+      });
+
+      const petalsContainer = document.getElementById("petals");
+      for (let i = 0; i < 25; i++) {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = 5 + Math.random() * 5 + "s";
+        petal.style.animationDelay = Math.random() * 5 + "s";
+        petalsContainer.appendChild(petal);
+      }
+
+      // Countdown Timer
+      function updateCountdown() {
+        const startTimeEl = document.getElementById("vs-start-time");
+        if (!startTimeEl) return;
+
+        const targetDate = new Date(startTimeEl.textContent.trim()).getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+          document.querySelector(".vs-time-days").textContent = "00";
+          document.querySelector(".vs-time-hours").textContent = "00";
+          document.querySelector(".vs-time-minutes").textContent = "00";
+          document.querySelector(".vs-time-seconds").textContent = "00";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.querySelector(".vs-time-days").textContent = String(
+          days
+        ).padStart(2, "0");
+        document.querySelector(".vs-time-hours").textContent = String(
+          hours
+        ).padStart(2, "0");
+        document.querySelector(".vs-time-minutes").textContent = String(
+          minutes
+        ).padStart(2, "0");
+        document.querySelector(".vs-time-seconds").textContent = String(
+          seconds
+        ).padStart(2, "0");
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
 </html>
